@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 export const UserContext = React.createContext()
 
-const userAxios = axios.create({
-  baseURL: 'https://blog-react-app.herokuapp.com/'
-})
+const userAxios = axios.create()
 
 userAxios.interceptors.request.use(config => {
   const token = localStorage.getItem("token")
@@ -39,7 +37,7 @@ export default function UserProvider(props){
   }, []);
 
   function signup(credentials){
-    userAxios.post("/auth/signup", credentials)
+    axios.post("auth/signup", credentials)
       .then(res => {
         const {user, token} = res.data
         localStorage.setItem("token", token)
@@ -54,7 +52,7 @@ export default function UserProvider(props){
 
 
   function login(credentials){
-    userAxios.post("/auth/signup", credentials)
+    axios.post("auth/login", credentials)
     .then(res => {
       const {user, token} = res.data
       localStorage.setItem("token", token)

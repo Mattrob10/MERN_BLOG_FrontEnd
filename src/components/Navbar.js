@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "/Users/matthewrobinson/Desktop/blogApp/client/src/assests/logo.png"
+import logo from '../assests/logo.png'
 export default function Navbar(props) {
   const { logout, token } = props;
   const location = useLocation();
